@@ -9,7 +9,8 @@ public class Main {
         binaryTree.root.right = new Node(3);
         binaryTree.root.left.left = new Node(4);
         binaryTree.root.left.right = new Node(5);
-        binaryTree.root.left.left.left = new Node(6);
+        binaryTree.root.left.left.right = new Node(6);
+        binaryTree.root.left.right.left = new Node(7);
 
         System.out.print("Inorder traversal : ");
         binaryTree.inOrder(binaryTree.root);
@@ -41,5 +42,9 @@ public class Main {
         System.out.println();
 
         System.out.println("Lowest common ancestor : " + binaryTree.lowestCommonAncestor(binaryTree.root, 5  , 6).key + "\n");
+
+        System.out.println("\nLevel order traversal : ");
+        binaryTree.levelOrder(binaryTree.root);
+        System.out.println();
     }
 }

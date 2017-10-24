@@ -31,7 +31,21 @@ public class BinaryTree {
     }
 
     void levelOrder(Node node) {
+        int currentLevel = 0;
+        int heightOfTree = heightOfTree(node);
+        for (int level = 0; level <= heightOfTree; level++) {
+            printLevel(node, currentLevel, level);
+            System.out.println();
+        }
+    }
 
+    private void printLevel(Node node, int currentLevel, int level) {
+        if (node == null) return;
+        if (currentLevel == level)
+            System.out.print(node.key + " ");
+        currentLevel++;
+        printLevel(node.left, currentLevel, level);
+        printLevel(node.right, currentLevel, level);
     }
 
     int heightOfTree(Node node) {
