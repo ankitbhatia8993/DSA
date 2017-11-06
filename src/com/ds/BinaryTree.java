@@ -1,6 +1,7 @@
 package com.ds;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class BinaryTree {
     Node root;
@@ -19,15 +20,76 @@ public class BinaryTree {
     void preOrder(Node node) {
         if (node == null) return;
         System.out.print(node.key + " ");
-        inOrder(node.left);
-        inOrder(node.right);
+        preOrder(node.left);
+        preOrder(node.right);
     }
 
     void postOrder(Node node) {
         if (node == null) return;
-        inOrder(node.left);
-        inOrder(node.right);
+        postOrder(node.left);
+        postOrder(node.right);
         System.out.print(node.key + " ");
+    }
+
+    void inOrderWORecursion(Node root) {
+        if (root == null) return;
+        Stack<Node> stack = new Stack<>();
+        Node node = root;
+
+        while (node != null) {
+            stack.push(node);
+            node = node.left;
+        }
+        while (!stack.empty()) {
+            node = stack.pop();
+            System.out.print(node.key + " ");
+            if (node.right != null) {
+                node = node.right;
+                while (node != null) {
+                    stack.push(node);
+                    node = node.left;
+                }
+            }
+        }
+    }
+
+    void preOrderWORecursion(Node root) {
+        if (root == null) return;
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+
+        while (!stack.empty()) {
+            root = stack.pop();
+            System.out.print(root.key + " ");
+            if (root.right != null) {
+                stack.push(root.right);
+            }
+            if (root.left != null) {
+                stack.push(root.left);
+            }
+        }
+    }
+
+    void postOrderWORecursion(Node root) {
+        if (root == null) return;
+        Stack<Node> stack1 = new Stack<>(), stack2 = new Stack<>();
+
+        stack1.push(root);
+        while (!stack1.empty()) {
+            Node node = stack1.pop();
+            stack2.push(node);
+
+            if (node.left != null) {
+                stack1.push(node.left);
+            }
+            if (node.right != null) {
+                stack1.push(node.right);
+            }
+        }
+
+        while (!stack2.empty()) {
+            System.out.print(stack2.pop().key + " ");
+        }
     }
 
     void levelOrder(Node node) {

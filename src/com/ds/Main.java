@@ -24,6 +24,18 @@ public class Main {
         binaryTree.postOrder(binaryTree.root);
         System.out.println();
 
+        System.out.print("Inorder traversal without recursion : ");
+        binaryTree.inOrderWORecursion(binaryTree.root);
+        System.out.println();
+
+        System.out.print("Preorder traversal without recursion : ");
+        binaryTree.preOrderWORecursion(binaryTree.root);
+        System.out.println();
+
+        System.out.print("Postorder traversal without recursion : ");
+        binaryTree.postOrderWORecursion(binaryTree.root);
+        System.out.println();
+
         System.out.println("\nSize of tree : " + binaryTree.sizeOfTree(binaryTree.root) + "\n");
         System.out.println("Height of tree : " + binaryTree.heightOfTree(binaryTree.root) + "\n");
 
