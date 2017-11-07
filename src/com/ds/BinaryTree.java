@@ -10,6 +10,12 @@ public class BinaryTree {
         root = null;
     }
 
+    /**
+     * Depth First Traversals
+     *   Inorder Traversal (Left-Root-Right)
+     *   Preorder Traversal (Root-Left-Right)
+     *   Postorder Traversal (Left-Right-Root)
+     */
     void inOrder(Node node) {
         if (node == null) return;
         inOrder(node.left);
@@ -92,11 +98,14 @@ public class BinaryTree {
         }
     }
 
+    /**
+     * Breadth First Traversal (Or Level Order Traversal).
+     * Maximum number of nodes at level ‘l’ of a binary tree is 2^l (Index of root level is 0).
+     */
     void levelOrder(Node node) {
-        int currentLevel = 0;
         int heightOfTree = heightOfTree(node);
         for (int level = 0; level <= heightOfTree; level++) {
-            printLevel(node, currentLevel, level);
+            printLevel(node, 0, level);
             System.out.println();
         }
     }
@@ -110,8 +119,11 @@ public class BinaryTree {
         printLevel(node.right, currentLevel, level);
     }
 
+    /**
+     * A Perfect Binary Tree of height h contains 2^h – 1 nodes.
+     */
     int heightOfTree(Node node) {
-        if (node == null) return -1;
+        if (node == null) return 0;
 
         int left = heightOfTree(node.left);
         int right = heightOfTree(node.right);
